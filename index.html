@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George Smerdov</title>
+    <style>
+        /* Чистый белый фон и центрирование */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        /* Контейнер, где всё выстроено в идеальную строчку */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+        }
+
+        /* Общие стили для главных букв */
+        .main-letter {
+            font-size: 130px;
+            font-weight: 800;
+            color: #111111;
+            text-transform: uppercase;
+            line-height: 1;
+            user-select: none;
+        }
+
+        /* Стили для появляющегося текста */
+        .extra-text {
+            font-size: 100px; /* Чуть меньше главных букв для баланса */
+            font-weight: 600;
+            color: #444444;
+            line-height: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 0;
+            max-width: 0;
+        }
+
+        /* Аккуратные отступы для текста */
+        .text-g {
+            padding-left: 8px;
+            animation: expandTextG 7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        .text-s {
+            padding-left: 8px;
+            animation: expandTextS 7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        /* Тонкий стильный разделитель */
+        .divider {
+            width: 2px;
+            background-color: #cccccc;
+            border-radius: 1px;
+            height: 0;
+            opacity: 0;
+            margin: 0;
+            animation: showDivider 7s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+        }
+
+        /* --- АНИМАЦИИ (KEYFRAMES) --- */
+
+        /* Палочка вырастает и раздвигает слова */
+        @keyframes showDivider {
+            0%, 15%, 85%, 100% {
+                height: 0;
+                opacity: 0;
+                margin: 0;
+            }
+            28%, 72% {
+                height: 85px;
+                opacity: 1;
+                margin: 0 30px; /* Отступы вокруг разделителя */
+            }
+        }
+
+        /* Раскрытие текста eorge (для слова George) */
+        @keyframes expandTextG {
+            0%, 15%, 85%, 100% {
+                opacity: 0;
+                max-width: 0;
+                letter-spacing: -10px;
+            }
+            20% {
+                opacity: 1; /* Проявление начинается чуть раньше для плавности */
+            }
+            28%, 72% {
+                opacity: 1;
+                max-width: 350px; /* Увеличено под длину "eorge" */
+                letter-spacing: normal;
+            }
+        }
+
+        /* Раскрытие текста merdov (для слова Smerdov) */
+        @keyframes expandTextS {
+            0%, 15%, 85%, 100% {
+                opacity: 0;
+                max-width: 0;
+                letter-spacing: -10px;
+            }
+            20% {
+                opacity: 1;
+            }
+            28%, 72% {
+                opacity: 1;
+                max-width: 450px; /* Увеличено под длину "merdov" */
+                letter-spacing: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <!-- Левая часть: G + eorge -->
+        <div class="main-letter">G</div>
+        <div class="extra-text text-g">eorge</div>
+        
+        <!-- Вертикальная палочка -->
+        <div class="divider"></div>
+        
+        <!-- Правая часть: S + merdov -->
+        <div class="main-letter">S</div>
+        <div class="extra-text text-s">merdov</div>
+    </div>
+
+</body>
+</html>
